@@ -31,47 +31,47 @@ final class MainCoctailsBarCoordinator: BaseCoordinator {
     // MARK: - Private Methods
     
     private func showMainModule() {
-        guard let controller = UIStoryboard(name: Constants.storyboardName, bundle: nil)
+        guard let viewController = UIStoryboard(name: Constants.storyboardName, bundle: nil)
             .instantiateViewController(withIdentifier: Constants.mainCoctailsBarViewControllerIdentifier) as? MainCoctailsBarViewController else { return }
         
-        controller.toBarHandler = { [weak self] in
+        viewController.toBarHandler = { [weak self] in
             guard let self else { return }
             self.showBar()
         }
         
-        controller.toAboutUs = { [weak self] in
+        viewController.toAboutUs = { [weak self] in
             guard let self else { return }
             self.showAboutUs()
         }
         
-        controller.toLogin = { [weak self] in
+        viewController.toLogin = { [weak self] in
             guard let self else { return }
             self.onFinishFlow?()
         }
         
-        let rootController = UINavigationController(rootViewController: controller)
+        let rootController = UINavigationController(rootViewController: viewController)
         setAsRoot(rootController)
         self.rootController = rootController
     }
 
 
     private func showBar() {
-        guard let controller = UIStoryboard(
+        guard let viewController = UIStoryboard(
             name: Constants.storyboardName,
             bundle: nil
         )
         .instantiateViewController(withIdentifier: Constants.barViewControllerIdentifier) as? BarViewController
         else { return }
-        rootController?.pushViewController(controller, animated: true)
+        rootController?.pushViewController(viewController, animated: true)
     }
     
     private func showAboutUs() {
-        guard let controller = UIStoryboard(
+        guard let viewController = UIStoryboard(
             name: Constants.storyboardName,
             bundle: nil
         )
         .instantiateViewController(withIdentifier: Constants.aboutUsViewControllerIdentifier) as? AboutUsViewController
         else { return }
-        rootController?.pushViewController(controller, animated: true)
+        rootController?.pushViewController(viewController, animated: true)
     }
 }

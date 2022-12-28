@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// UserHandler
+typealias UserHandler =  ((User) -> ())
+
 /// Экран регистрации
 final class RegistrationViewController: UIViewController {
     
@@ -28,8 +31,8 @@ final class RegistrationViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    var registration: ((User) -> ())?
-    var toBack: VoidCompletion?
+    var registrationHandler: UserHandler?
+    var toBackHandler: VoidHandler?
     var user: User?
     
     // MARK: - Private IBAction
@@ -46,11 +49,11 @@ final class RegistrationViewController: UIViewController {
         
         let user = User(eMail: email, password: password, login: login, phoneNumber: phone)
         
-        registration?(user)
+        registrationHandler?(user)
     }
     
     @IBAction func toBackButtonAction(_ sender: Any) {
-        toBack?()
+        toBackHandler?()
     }
     
 }

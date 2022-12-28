@@ -21,7 +21,7 @@ final class LoginCoordinator: BaseCoordinator {
     // MARK: - Public Properties
     
     var rootController: UINavigationController?
-    var onFinishFlowHandler: VoidCompletion?
+    var onFinishFlowHandler: VoidHandler?
     
     // MARK: - Public Methods
     override func start() {
@@ -30,36 +30,36 @@ final class LoginCoordinator: BaseCoordinator {
     
     // MARK: - Private Methods
     private func showLoginModule() {
-        guard let controller = UIStoryboard(name: Constants.storyboardName, bundle: nil)
+        guard let viewController = UIStoryboard(name: Constants.storyboardName, bundle: nil)
             .instantiateViewController(withIdentifier: Constants.applicationLoginViewControllerIdentifier) as? ApplicationLoginViewController else { return }
         
-        controller.toMainCoctailsBar = { [weak self] in
+        viewController.toMainCoctailsBarHandler = { [weak self] in
             guard let self else { return }
             self.onFinishFlowHandler?()
         }
         
-        controller.toRegistration = { [weak self] in
+        viewController.toRegistrationHandler = { [weak self] in
             guard let self else { return }
             self.showRegistration()
             
         }
         
        
-        let rootController = UINavigationController(rootViewController: controller)
+        let rootController = UINavigationController(rootViewController: viewController)
         setAsRoot(rootController)
         self.rootController = rootController
     }
     
     
     private func showMainCoctailsBar() {
-        guard let controller = UIStoryboard(
+        guard let viewController = UIStoryboard(
             name: Constants.storyboardName,
             bundle: nil
         )
             .instantiateViewController(withIdentifier: Constants.mainCoctailsBarViewControllerIdentifier) as? MainCoctailsBarViewController
         else { return }
         
-        rootController = UINavigationController(rootViewController: controller)
+        rootController = UINavigationController(rootViewController: viewController)
         guard let rootController else { return }
         setAsRoot(rootController)
         
@@ -67,13 +67,13 @@ final class LoginCoordinator: BaseCoordinator {
 
         
         private func showRegistration() {
-            guard let controller = UIStoryboard(
+            guard let viewController = UIStoryboard(
                 name: Constants.storyboardName,
                 bundle: nil
             )
                 .instantiateViewController(withIdentifier: Constants.registrationViewControllerIdentifier) as? RegistrationViewController
             else { return }
-            rootController = UINavigationController(rootViewController: controller)
+            rootController = UINavigationController(rootViewController: viewController)
             guard let rootController else { return }
             setAsRoot(rootController)
         }

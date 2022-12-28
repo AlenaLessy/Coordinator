@@ -8,7 +8,7 @@
 import UIKit
 
 /// Тип замыкания ничего не принимающего и не передающего
-typealias VoidCompletion = (() -> Void)
+typealias VoidHandler = (() -> Void)
 
 /// Главный экран приложения
 final class MainCoctailsBarViewController: UIViewController {
@@ -21,9 +21,9 @@ final class MainCoctailsBarViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    var toBarHandler: VoidCompletion?
-    var toAboutUs: VoidCompletion?
-    var toLogin: VoidCompletion?
+    var toBarHandler: VoidHandler?
+    var toAboutUs: VoidHandler?
+    var toLogin: VoidHandler?
 
     // MARK: - Private IBAction
     

@@ -26,8 +26,8 @@ final class ApplicationLoginViewController: UIViewController {
     
     // MARK: - Public Properties
    
-    var toMainCoctailsBar: VoidCompletion?
-    var toRegistration: VoidCompletion?
+    var toMainCoctailsBarHandler: VoidHandler?
+    var toRegistrationHandler: VoidHandler?
   
   // MARK: Private IBAction
     
@@ -42,13 +42,13 @@ final class ApplicationLoginViewController: UIViewController {
             return
         }
         UserDefaults.standard.set(true, forKey: Constants.userDefaultKey)
-        toMainCoctailsBar?()
+        toMainCoctailsBarHandler?()
         
         
     }
     
     @IBAction private func registrationButtonAction(_ sender: Any) {
-        toRegistration?()
+        toRegistrationHandler?()
     }
    
 
