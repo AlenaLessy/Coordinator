@@ -1,13 +1,13 @@
 //
-//  CoordinatorUITestsLaunchTests.swift
-//  CoordinatorUITests
+//  RouterUITestsLaunchTests.swift
+//  RouterUITests
 //
 //  Created by Алена Панченко on 28.12.2022.
 //
 
 import XCTest
 
-final class CoordinatorUITestsLaunchTests: XCTestCase {
+final class RouterUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

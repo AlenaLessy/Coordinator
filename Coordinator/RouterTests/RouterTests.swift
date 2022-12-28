@@ -1,14 +1,14 @@
 //
-//  CoordinatorTests.swift
-//  CoordinatorTests
+//  RouterTests.swift
+//  RouterTests
 //
 //  Created by Алена Панченко on 28.12.2022.
 //
 
 import XCTest
-@testable import Coordinator
+@testable import Router
 
-final class CoordinatorTests: XCTestCase {
+final class RouterTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

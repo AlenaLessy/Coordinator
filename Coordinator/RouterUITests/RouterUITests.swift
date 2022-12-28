@@ -1,13 +1,13 @@
 //
-//  CoordinatorUITests.swift
-//  CoordinatorUITests
+//  RouterUITests.swift
+//  RouterUITests
 //
 //  Created by Алена Панченко on 28.12.2022.
 //
 
 import XCTest
 
-final class CoordinatorUITests: XCTestCase {
+final class RouterUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
