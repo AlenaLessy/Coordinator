@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Coordinator
+//  Router
 //
 //  Created by Алена Панченко on 28.12.2022.
 //
