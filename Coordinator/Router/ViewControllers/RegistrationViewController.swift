@@ -16,9 +16,10 @@ final class RegistrationViewController: UIViewController {
         static let login = "1"
         static let password = "1"
         static let userDefaultKey = "login"
+        static let messageError = "не все поля заполнены"
     }
     
-    // MARK: - Private Visual Components
+    // MARK: - Private IBOutlets
     
     @IBOutlet private weak var eMailTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
@@ -31,7 +32,7 @@ final class RegistrationViewController: UIViewController {
     var toBack: VoidCompletion?
     var user: User?
     
-    // MARK: - Private Methods
+    // MARK: - Private IBAction
     
     @IBAction func registrationButtonAction(_ sender: Any) {
         guard let login = loginTextField.text,
@@ -39,7 +40,7 @@ final class RegistrationViewController: UIViewController {
               let phone = phoneNumberTextField.text,
               let email = eMailTextField.text
         else {
-            print("не все поля заполнены")
+            print(Constants.messageError)
             return
         }
         

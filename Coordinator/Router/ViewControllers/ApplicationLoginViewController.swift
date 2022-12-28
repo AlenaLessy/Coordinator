@@ -16,28 +16,29 @@ final class ApplicationLoginViewController: UIViewController {
         static let login = "1"
         static let password = "1"
         static let userDefaultKey = "login"
+        static let errorMessage = "Логин или пароль не соответствуют"
     }
 
-    // MARK: Public IBOutlets
+    // MARK: Private IBOutlets
     
-    @IBOutlet weak var loginTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var loginTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
     // MARK: - Public Properties
    
-    var toMainCoctailsBar: (() -> Void)?
-    var toRegistration: (() -> Void)?
+    var toMainCoctailsBar: VoidCompletion?
+    var toRegistration: VoidCompletion?
   
-  // MARK: Private Methods
+  // MARK: Private IBAction
     
-    @IBAction func entryButtonAction(_ sender: Any) {
+    @IBAction private func entryButtonAction(_ sender: Any) {
         guard let login = loginTextField.text,
               let password = passwordTextField.text,
               login == Constants.login,
               password == Constants.password
                 else
         {
-            print("Логин или пароль не соответствуют")
+            print(Constants.errorMessage)
             return
         }
         UserDefaults.standard.set(true, forKey: Constants.userDefaultKey)
@@ -46,7 +47,7 @@ final class ApplicationLoginViewController: UIViewController {
         
     }
     
-    @IBAction func registrationButtonAction(_ sender: Any) {
+    @IBAction private func registrationButtonAction(_ sender: Any) {
         toRegistration?()
     }
    

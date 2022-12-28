@@ -21,7 +21,7 @@ final class LoginCoordinator: BaseCoordinator {
     // MARK: - Public Properties
     
     var rootController: UINavigationController?
-    var onFinishFlow: (() -> Void)?
+    var onFinishFlowHandler: VoidCompletion?
     
     // MARK: - Public Methods
     override func start() {
@@ -35,7 +35,7 @@ final class LoginCoordinator: BaseCoordinator {
         
         controller.toMainCoctailsBar = { [weak self] in
             guard let self else { return }
-            self.onFinishFlow?()
+            self.onFinishFlowHandler?()
         }
         
         controller.toRegistration = { [weak self] in

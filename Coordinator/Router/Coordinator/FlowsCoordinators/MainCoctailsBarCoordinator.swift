@@ -29,14 +29,14 @@ final class MainCoctailsBarCoordinator: BaseCoordinator {
     }
 
     // MARK: - Private Methods
+    
     private func showMainModule() {
         guard let controller = UIStoryboard(name: Constants.storyboardName, bundle: nil)
             .instantiateViewController(withIdentifier: Constants.mainCoctailsBarViewControllerIdentifier) as? MainCoctailsBarViewController else { return }
         
-        controller.toBar = { [weak self] in
+        controller.toBarHandler = { [weak self] in
             guard let self else { return }
             self.showBar()
-            
         }
         
         controller.toAboutUs = { [weak self] in
@@ -48,6 +48,7 @@ final class MainCoctailsBarCoordinator: BaseCoordinator {
             guard let self else { return }
             self.onFinishFlow?()
         }
+        
         let rootController = UINavigationController(rootViewController: controller)
         setAsRoot(rootController)
         self.rootController = rootController

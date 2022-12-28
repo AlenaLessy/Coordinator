@@ -30,8 +30,9 @@ final class ApplicationCoordinator: BaseCoordinator {
     private func toCoctailsBar() {
         let coordinator = MainCoctailsBarCoordinator()
         coordinator.onFinishFlow = { [weak self, weak coordinator] in
-            self?.removeDependency(coordinator)
-            self?.start()
+            guard let self else { return }
+            self.removeDependency(coordinator)
+            self.start()
         }
         addDependency(coordinator)
         coordinator.start()
@@ -39,9 +40,10 @@ final class ApplicationCoordinator: BaseCoordinator {
     
     private func toRegistration() {
         let coordinator = LoginCoordinator()
-        coordinator.onFinishFlow = { [weak self, weak coordinator] in
-            self?.removeDependency(coordinator)
-            self?.start()
+        coordinator.onFinishFlowHandler = { [weak self, weak coordinator] in
+            guard let self else { return }
+            self.removeDependency(coordinator)
+            self.start()
         }
         addDependency(coordinator)
         coordinator.start()
